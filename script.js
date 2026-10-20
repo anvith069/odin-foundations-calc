@@ -75,20 +75,26 @@ for(const oprbtn of oprbtns) {
             display.textContent=operand1+' '+operator+' '+operand2;
         }
         else if(oprss.includes(operator)){
-            operand1=operate(operand1,operator,operand2);
-            operator=oprbtn.textContent;
-            operand2='';
-            display.textContent=operand1+' '+operator+' '+operand2;
+            if('+-'.includes(oprbtn.textContent)&&operand2=='') {
+                operand2+=oprbtn.textContent;
+                display.textContent=operand1+' '+operator+' '+operand2;
+            }
+            else{
+                operand1=operate(operand1,operator,operand2);
+                operator=oprbtn.textContent;
+                operand2='';
+                display.textContent=operand1+' '+operator+' '+operand2;
+            }
         }
     });
 }
 
 const eqlbtn = document.querySelector('#equalbtn');
 eqlbtn.addEventListener('click',()=>{
-    display.textContent=operate(operand1,operator,operand2);
-    operand1='';
+    operand1=operate(operand1,operator,operand2);
     operand2='';
     operator='';
+    display.textContent=operand1+' '+operator+' '+operand2;
 });
 
 const clrbtn = document.querySelector('#clearbtn');
