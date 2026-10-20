@@ -38,7 +38,7 @@ function operate(operand1,operator,operand2){
             result=div(operand1,operand2);
             break;
         default:
-            result=`no operator entered, equals ${operand1}`;
+            result=`no operator entered, equals ${operand1}, press CLR`;
             return result;
     }
 
