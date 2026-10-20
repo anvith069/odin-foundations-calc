@@ -28,10 +28,6 @@ function operate(operand1,operator,operand2){
             result=sub(operand1,operand2);
             break;
         case '*':
-            if(operand2==0){
-                result=`Multiplication by zero! equals ${operand1}`;
-                return result;
-            }
             result=mul(operand1,operand2);
             break;
         case '/':
@@ -57,7 +53,8 @@ const oprbtns= [...document.querySelectorAll('.operate')];
 for(const digitbtn of digitbtns){
     digitbtn.addEventListener('click',()=>{
         if(operator==='')  {
-            if(operand1.includes('.')&&digitbtn.textContent=='.') operand1+='';
+            if(typeof operand1 === 'number') operand1=digitbtn.textContent;
+            else if(operand1.includes('.')&&digitbtn.textContent=='.') operand1+='';
             else operand1+=digitbtn.textContent;
         }
         else if(oprss.includes(operator)) {
